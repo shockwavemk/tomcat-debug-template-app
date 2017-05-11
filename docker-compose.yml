@@ -1,0 +1,34 @@
+version: "2"
+
+services:
+
+  database:
+    build:
+      context: ./docker/registration-database
+    image: registration-database
+    # set default mysql root password, change as needed
+    environment:
+      MYSQL_ROOT_PASSWORD: pw
+    # Expose port 3306 to host. Not for the application but
+    # handy to inspect the database from the host machine.
+    ports:
+      - "3306:3306" 
+    restart: always
+
+  webserver:
+    # system:manager
+    build: 
+      context: ./docker/registration-webserver
+    image: registration-webserver
+    # mount point for application in tomcat
+    volumes:
+      - ./target/UserSignup:/usr/local/tomcat/webapps/UserSignup
+    links:
+      - database:registration-database
+    # open ports for tomcat and remote debugging
+    ports:
+      - "80:8080"
+      - "8000:8000"
+    restart: always
+
+ 
