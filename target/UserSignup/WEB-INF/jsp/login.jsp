@@ -67,7 +67,7 @@
 	<div class="container">
 		<div class="jumbotron">
 			<div>
-				<h1>Welcome to User Login23546999222</h1>
+				<h1>Welcome to User Login</h1>
 			</div>
 		</div>
 

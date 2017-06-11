@@ -110,10 +110,10 @@
 
 								<div class="form-group">
 									<label for="userNameInput" class="col-lg-3 control-label">User
-										Name</label>
+										Name Test this 2</label>
 									<div class="col-lg-9">
 										<form:input type="text" class="form-control" path="userName"
-											id="userNameInput" placeholder="User Name" />
+											id="userNameInput" placeholder="User Name3" />
 										<form:errors path="userName" cssClass="error" />
 									</div>
 								</div>
