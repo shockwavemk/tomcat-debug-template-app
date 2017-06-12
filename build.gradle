@@ -166,7 +166,7 @@ dependencies {
 }
 
 war {
-    baseName = "java-rest"
+    baseName = "ROOT"
 }
 
 

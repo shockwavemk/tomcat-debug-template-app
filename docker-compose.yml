@@ -17,7 +17,7 @@ services:
       context: ./docker/tomcat-webserver
     image: registration-webserver
     volumes:
-      - ./build/libs/java-rest.war:/usr/local/tomcat/webapps/java-rest.war
+      - ./build/libs:/usr/local/tomcat/webapps
     links:
       - database:mysql-database
     ports:
