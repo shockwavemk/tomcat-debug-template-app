@@ -3,11 +3,12 @@ version: "2"
 services:
 
   database:
-    build:
-      context: ./docker/mysql-database
-    image: mysql-database
+    image: mysql:5.6
     environment:
       MYSQL_ROOT_PASSWORD: pw
+      MYSQL_DATABASE: tomcat
+      MYSQL_USER: rest
+      MYSQL_PASSWORD: pw
     ports:
       - "3306:3306" 
     restart: always

@@ -35,17 +35,26 @@
 
     <tx:annotation-driven/>
 
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
-        <constructor-arg ref="database"/>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://mysql-database:3306/tomcat" />
+        <property name="username" value="root" />
+        <property name="password" value="pw" />
     </bean>
 
     <beans profile="dev">
 
         <bean id="database" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-            <property name="driverClassName" value="org.h2.Driver"/>
-            <property name="url" value="jdbc:h2:mem:restDB"/>
-            <property name="username" value="sa"/>
-            <property name="password" value=""/>
+            <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+            <property name="url" value="jdbc:mysql://mysql-database:3306/tomcat"/>
+            <property name="username" value="root"/>
+            <property name="password" value="pw"/>
+            <property name="initialSize" value="10"/>
+            <property name="maxActive" value="100"/>
+            <property name="maxIdle" value="50"/>
+            <property name="minIdle" value="10"/>
+            <property name="timeBetweenEvictionRunsMillis" value="30000"/>
+            <property name="minEvictableIdleTimeMillis" value="6000"/>
         </bean>
 
     </beans>
@@ -54,9 +63,9 @@
 
         <bean id="database" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
             <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-            <property name="url" value="jdbc:mysql://localhost:3306/javarest"/>
+            <property name="url" value="jdbc:mysql://mysql-database:3306/tomcat"/>
             <property name="username" value="root"/>
-            <property name="password" value=""/>
+            <property name="password" value="pw"/>
             <property name="initialSize" value="10"/>
             <property name="maxActive" value="100"/>
             <property name="maxIdle" value="50"/>
@@ -70,14 +79,36 @@
 
 <beans profile="staging">
 
-        <!-- staging database-->
+    <bean id="database" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://mysql-database:3306/tomcat"/>
+        <property name="username" value="root"/>
+        <property name="password" value="pw"/>
+        <property name="initialSize" value="10"/>
+        <property name="maxActive" value="100"/>
+        <property name="maxIdle" value="50"/>
+        <property name="minIdle" value="10"/>
+        <property name="timeBetweenEvictionRunsMillis" value="30000"/>
+        <property name="minEvictableIdleTimeMillis" value="6000"/>
+    </bean>
 
 
     </beans>
 
     <beans profile="production">
 
-        <!-- production database -->
+        <bean id="database" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+            <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+            <property name="url" value="jdbc:mysql://mysql-database:3306/tomcat"/>
+            <property name="username" value="root"/>
+            <property name="password" value="pw"/>
+            <property name="initialSize" value="10"/>
+            <property name="maxActive" value="100"/>
+            <property name="maxIdle" value="50"/>
+            <property name="minIdle" value="10"/>
+            <property name="timeBetweenEvictionRunsMillis" value="30000"/>
+            <property name="minEvictableIdleTimeMillis" value="6000"/>
+        </bean>
 
 
     </beans>
